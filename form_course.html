@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - EduForm</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<style>
+      /* Header Styles */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            cursor: pointer;
+        }
+
+        .profile-icon i {
+            font-size: 20px;
+        }
+
+        /* Responsive Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                position: static;
+            }
+            
+            .logo {
+                position: static;
+                margin-bottom: 10px;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .search-bar {
+                order: 2;
+                width: 100%;
+            }
+        }
+
+body {
+  margin: 0;
+  background: #F2ABB6;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+.form-page {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #F2ABB6;
+  box-sizing: border-box;
+}
+
+.form-wrapper {
+  background: white;
+  border-radius: 50px;
+  width: 100%;
+  max-width: 900px;
+  padding: 40px;
+  position: relative;
+  box-sizing: border-box;
+  margin: 20px auto;
+}
+
+.form-title {
+  text-align: center;
+  font-size: clamp(28px, 5vw, 45px);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.form-subtitle {
+  text-align: center;
+  font-size: clamp(16px, 3vw, 25px);
+  font-weight: 500;
+  margin-bottom: 40px;
+  color: #666;
+}
+
+.training-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.form-group label span {
+  color: red;
+  margin-left: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.2);
+  font-size: 16px;
+  background: #E8EDF5;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 120px;
+  font-family: inherit;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+.form-group .error {
+  color: #DC2121;
+  font-size: 14px;
+  display: none;
+  margin-top: 5px;
+}
+
+button[type="submit"] {
+  margin-top: 30px;
+  padding: 20px;
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  background: linear-gradient(269.23deg, #D38080 4.84%, #DC213E 49.52%, #EB818F 93.28%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(220, 33, 62, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-page {
+    padding: 10px;
+  }
+  
+  .form-wrapper {
+    border-radius: 30px;
+    padding: 30px 20px;
+    margin: 10px auto;
+  }
+  
+  .checkbox-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .checkbox-group label {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-wrapper {
+    border-radius: 20px;
+    padding: 25px 15px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  button[type="submit"] {
+    padding: 15px;
+  }
+}
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 10px;
+        }
+
+        .footer-logo img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .footer-bottom i {
+            margin-right: 5px;
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-section {
+                min-width: auto;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+.popup-success {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; 
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(3px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.popup-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+  box-sizing: border-box;
+}
+
+.popup-box h2 {
+  font-size: clamp(20px, 4vw, 24px);
+  margin-bottom: 15px;
+  color: #4CAF50;
+}
+
+.popup-box p {
+  font-size: clamp(14px, 3vw, 16px);
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.popup-box button {
+  background: linear-gradient(to right, #dc213e, #eb808f);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+}
+
+.popup-box button:hover {
+  background: linear-gradient(to right, #b71c1c, #e06666);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+
+</head>
+<body>
+ <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="home_page.html">
+                        <img src="logoEduForm.png" alt="EduForm Logo" width="100" />
+                    </a>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for anything">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="Program.html">Program</a>
+                    <a href="testimoni.html">Testimoni</a>
+                    <a href="profile.html" class="profile-icon">
+                      <i class="fas fa-user"></i>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+<!-- Form Page -->
+<div class="form-page">
+  <div class="form-wrapper">
+    <h1 class="form-title">EduForm</h1>
+    <p class="form-subtitle">Daftar Pelatihan Sekarang dan Tingkatkan Skill Anda!</p>
+
+    <form class="training-form" onsubmit="return validateForm(event)">
+      <div class="form-group">
+        <label>Nama Depan<span>*</span></label>
+        <input type="text" id="nama-depan">
+        <small class="error" style="display:none">Nama wajib diisi</small>
+      </div>
+
+      <div class="form-group">
+        <label>Nama Belakang<span>*</span></label>
+        <input type="text" id="nama-belakang">
+        <small class="error" style="display:none">Nama wajib diisi</small>
+      </div>
+
+      <div class="form-group">
+        <label>Email<span>*</span></label>
+        <input type="email" id="email">
+        <small class="error" style="display:none">Email wajib diisi</small>
+      </div>
+
+      <div class="form-group">
+        <label>Nomor HP<span>*</span></label>
+        <input type="text" id="hp">
+        <small class="error" style="display:none">Nomor HP wajib 12 digit angka (cth: 081234567811)</small>
+      </div>
+
+      <div class="form-group">
+        <label>Tanggal Lahir<span>*</span></label>
+        <input type="date" id="tgl-lahir">
+        <small class="error" style="display:none">Usia harus antara 14-65 tahun</small>
+      </div>
+
+      <div class="form-group">
+        <label>Pendidikan Terakhir<span>*</span></label>
+        <select id="pendidikan">
+          <option value="">Pilih Pendidikan</option>
+          <option>SMA/SMK</option>
+          <option>Diploma 3</option>
+          <option>Sarjana (S1)</option>
+          <option>Magister (S2)</option>
+          <option>Doktor (S3)</option>
+          <option>Lainnya</option>
+        </select>
+        <small class="error" style="display:none">Pilihan wajib dipilih</small>
+      </div>
+
+      <div class="form-group">
+        <label>Pilih Pelatihan<span>*</span></label>
+        <select id="jenis">
+          <option value="">Pilih Pelatihan</option>
+          <option>Web Development</option>
+          <option>Mobile Development</option>
+          <option>Data Science</option>
+          <option>UI/UX Design</option>
+          <option>Digital Marketing</option>
+          <option>Cyber Security</option>
+        </select>
+        <small class="error" style="display:none">Pilihan wajib dipilih</small>
+      </div>
+
+      <div class="form-group">
+        <label>Level Pelatihan<span>*</span></label>
+        <div class="checkbox-group" id="level">
+          <label><input type="checkbox" value="Pemula">Pemula</label>
+          <label><input type="checkbox" value="Menengah">Menengah</label>
+          <label><input type="checkbox" value="Mahir">Mahir</label>
+        </div>
+        <small class="error" style="display:none">Pilihan wajib dipilih</small>
+      </div>
+
+      <div class="form-group">
+        <label>Jadwal Pelatihan<span>*</span></label>
+        <div class="checkbox-group" id="jadwal">
+          <label><input type="checkbox" value="Jumat, 19:00">Jumat, 19:00</label>
+          <label><input type="checkbox" value="Sabtu, 10:00">Sabtu, 10:00</label>
+          <label><input type="checkbox" value="Sabtu, 19:00">Sabtu, 19:00</label>
+          <label><input type="checkbox" value="Minggu, 14:00">Minggu, 14:00</label>
+          <label><input type="checkbox" value="Minggu, 19:00">Minggu, 19:00</label>
+        </div>
+        <small class="error" style="display:none">Pilihan maksimal dua waktu pelatihan</small>
+      </div>
+
+      <div class="form-group">
+        <label>Pengalaman Terkait (opsional)</label>
+        <textarea placeholder="Ceritakan pengalaman Anda yang relevan dengan pelatihan ini..."></textarea>
+      </div>
+
+      <button type="submit">DAFTAR PELATIHAN SEKARANG</button>
+    </form>
+
+    <!-- Popup Sukses -->
+<div class="popup-success" id="popupSuccess">
+  <div class="popup-box">
+    <h2>✅ Pendaftaran Berhasil!</h2>
+    <p>Terima kasih telah mendaftar pelatihan. Kami akan segera menghubungi Anda melalui email.</p>
+    <button onclick="closePopup()">Tutup</button>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script>
+function validateForm(e) {
+  e.preventDefault();
+  let valid = true;
+
+  document.querySelectorAll('.form-group').forEach(group => {
+    const input = group.querySelector('input, select');
+    const error = group.querySelector('.error');
+    if (!input || !error) return;
+    if (input.type === 'checkbox') return;
+
+    if (!input.value.trim()) {
+      error.style.display = 'block';
+      valid = false;
+    } else {
+      error.style.display = 'none';
+    }
+  });
+
+  // Validasi tanggal lahir (usia)
+  const tgl = document.getElementById('tgl-lahir').value;
+  const errorTgl = document.getElementById('tgl-lahir').parentNode.querySelector('.error');
+  if (tgl) {
+    const usia = new Date().getFullYear() - new Date(tgl).getFullYear();
+    if (usia < 14 || usia > 65) {
+      errorTgl.style.display = 'block';
+      valid = false;
+    } else {
+      errorTgl.style.display = 'none';
+    }
+  }
+
+  // Validasi Nomor HP (harus 12 digit angka)
+  const noHp = document.getElementById('hp').value.trim();
+  const errorHp = document.getElementById('hp').parentNode.querySelector('.error');
+  if (!/^\d{12}$/.test(noHp)) {
+    errorHp.style.display = 'block';
+    valid = false;
+  } else {
+    errorHp.style.display = 'none';
+  }
+
+  // Validasi Level Pelatihan (harus 1)
+  const level = [...document.querySelectorAll('#level input:checked')];
+  const errLevel = document.querySelector('#level').parentNode.querySelector('.error');
+  if (level.length !== 1) {
+    errLevel.style.display = 'block';
+    valid = false;
+  } else {
+    errLevel.style.display = 'none';
+  }
+
+  // Validasi Jadwal Pelatihan (harus 2)
+  const jadwal = [...document.querySelectorAll('#jadwal input:checked')];
+  const errJadwal = document.querySelector('#jadwal').parentNode.querySelector('.error');
+  if (jadwal.length !== 2) {
+    errJadwal.style.display = 'block';
+    valid = false;
+  } else {
+    errJadwal.style.display = 'none';
+  }
+
+  if (valid) {
+    document.getElementById('popupSuccess').style.display = 'flex';
+  }
+
+  return valid;
+}
+
+// Batasi checkbox level (maks 1)
+document.querySelectorAll('#level input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener('change', function () {
+    const checked = document.querySelectorAll('#level input[type="checkbox"]:checked');
+    if (checked.length > 1) {
+      this.checked = false;
+      alert("Hanya boleh memilih satu level pelatihan.");
+    }
+  });
+});
+
+// Batasi checkbox jadwal (maks 2)
+document.querySelectorAll('#jadwal input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener('change', function () {
+    const checked = document.querySelectorAll('#jadwal input[type="checkbox"]:checked');
+    if (checked.length > 2) {
+      this.checked = false;
+      alert("Maksimal hanya boleh memilih 2 jadwal pelatihan.");
+    }
+  });
+});
+
+// Tutup popup dan reset form
+function closePopup() {
+  document.getElementById('popupSuccess').style.display = 'none';
+  document.querySelector('.training-form').reset();
+  window.location.href = "home_page.html";
+}
+</script>
+
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tentang EduForm</h3>
+                    <a href="#">Tentang kami</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Pusat Kontak</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(021) 3030-1111</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>0822-3457-999</span>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="logoEduForm.png" alt="EduForm Logo">
+                </div>
+                <i class="fas fa-copyright"></i> 2025 EduForm. Semua hak cipta dilindungi.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

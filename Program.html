@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Program Pelatihan - EduForm</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #F9FAFB;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+    }
+
+    .logo img {
+      width: 80px;
+      height: auto;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover {
+      color: #dc2626;
+    }
+
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      cursor: pointer;
+    }
+
+    .profile-icon i {
+      font-size: 20px;
+    }
+
+    /* Program Section */
+    .program-section {
+      padding: 60px 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .program-section h2 {
+      font-size: 48px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .program-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .program-card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .program-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .program-card h3 {
+      font-size: 22px;
+      color: #dc2626;
+      margin-bottom: 10px;
+    }
+
+    .program-card p {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+      color: white;
+      padding: 40px 0 20px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .footer-section p, .footer-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-section a:hover {
+      color: white;
+    }
+
+    .contact-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+    }
+
+    .footer-logo {
+      margin-bottom: 10px;
+    }
+
+    .footer-logo img {
+      max-width: 100px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <a href="home_page.html">
+          <img src="logoEduForm.png" alt="EduForm Logo" />
+        </a>
+      </div>
+      <nav class="nav-menu">
+        <a href="program.html">Program</a>
+        <a href="testimoni.html">Testimoni</a>
+        <a href="profile.html" class="profile-icon">
+          <i class="fas fa-user"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Program Section -->
+  <section class="program-section">
+    <h2>Program Pelatihan EduForm</h2>
+    <div class="program-list">
+      <div class="program-card">
+        <h3>Mobile Development</h3>
+        <p>Pelatihan membuat aplikasi Android dan iOS menggunakan Flutter dan React Native, dari dasar hingga advanced.</p>
+      </div>
+      <div class="program-card">
+        <h3>Web Development</h3>
+        <p>Kuasai front-end (HTML, CSS, JS) dan back-end (PHP, Node.js) untuk membangun website profesional dan dinamis.</p>
+      </div>
+      <div class="program-card">
+        <h3>Data Science</h3>
+        <p>Belajar analisis data, statistik, dan machine learning menggunakan Python dan tools seperti Pandas dan Scikit-learn.</p>
+      </div>
+      <div class="program-card">
+        <h3>UI/UX Design</h3>
+        <p>Pelajari desain antarmuka pengguna dan pengalaman pengguna dengan tools seperti Figma dan Adobe XD.</p>
+      </div>
+      <div class="program-card">
+        <h3>Digital Marketing</h3>
+        <p>Strategi SEO, pemasaran media sosial, email marketing, dan iklan berbayar untuk mengembangkan bisnis digital Anda.</p>
+      </div>
+      <div class="program-card">
+        <h3>Cyber Security</h3>
+        <p>Pahami keamanan jaringan, ethical hacking, dan perlindungan data untuk menghadapi ancaman digital modern.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Tentang EduForm</h3>
+          <a href="#">Tentang kami</a>
+        </div>
+        <div class="footer-section">
+          <h3>Pusat Kontak</h3>
+          <div class="contact-item"><i class="fas fa-phone"></i><span>(021) 3030-1111</span></div>
+          <div class="contact-item"><i class="fab fa-whatsapp"></i><span>0822-3457-999</span></div>
+        </div>
+        <div class="footer-section">
+          <h3>Ikuti Kami</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-logo"><img src="logoEduForm.png" alt="EduForm Logo"></div>
+        <i class="fas fa-copyright"></i> 2025 EduForm. Semua hak cipta dilindungi.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

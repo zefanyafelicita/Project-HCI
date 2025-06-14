@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - EduForm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=SF+Pro+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px; /* Adjust padding to make space */
+            position: relative;  /* Make sure profile icon can be positioned absolutely */
+        }
+
+        .logo {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px; /* Define the max width */
+            margin: 0 auto; /* Centers the search bar horizontally */
+            position: relative;
+        }
+
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            cursor: pointer;
+        }
+
+        .profile-icon i {
+            font-size: 20px;
+        }
+
+        /* Profile Header - Smaller */
+        .profile-header {
+            background: linear-gradient(135deg, #fae0e0 0%, #ffe0e0 100%);
+            height: 160px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image {
+            width: 100px; /* Ukuran diameter lingkaran */
+            height: 100px; /* Ukuran diameter lingkaran */
+            border-radius: 50%; /* Membuat gambar berbentuk bulat */
+            object-fit: cover; /* Menyesuaikan gambar tanpa merusak proporsi */
+            border: 3px solid #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1512px;
+            margin: 0 auto;
+            padding: 30px 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-title {
+            font-family: 'SF Pro Display', sans-serif;
+            font-weight: 600;
+            font-size: 35px;
+            color: #000000;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Form Container - Smaller */
+        .form-container {
+            background: rgba(255, 224, 224, 0.4);
+            border-radius: 15px;
+            border: 1px solid #ffffff;
+            padding: 20px;
+            width: 100%;
+            max-width: 480px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            font-family: 'SF Pro Display', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #000000;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 42px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            padding: 0 15px;
+            font-family: 'SF Pro Display', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.9);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #dc213e;
+            box-shadow: 0 0 0 3px rgba(220, 33, 62, 0.1);
+        }
+
+        .form-textarea {
+            height: 80px;
+            padding: 12px 15px;
+            resize: vertical;
+            font-family: 'SF Pro Display', sans-serif;
+            line-height: 1.4;
+        }
+
+        .form-select {
+            position: relative;
+        }
+
+        .form-select select {
+            width: 100%;
+            height: 42px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            padding: 0 15px;
+            font-family: 'SF Pro Display', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.8);
+            outline: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .form-select::after {
+            content: '';
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>') no-repeat center;
+            background-size: contain;
+            pointer-events: none;
+        }
+
+        /* Save Button - Smaller */
+        .save-button {
+            background: linear-gradient(227deg, #d38080 5%, #dc213e 50%, #eb808f 93%);
+            border: none;
+            border-radius: 15px;
+            width: 140px;
+            height: 42px;
+            font-family: 'SF Pro Display', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .save-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 33, 62, 0.3);
+        }
+
+        .save-button:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center; /* Center the footer content */
+        }
+
+        .footer-content {
+            display: flex; /* Use flexbox to align sections */
+            justify-content: center; /* Center the footer sections */
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+            width: 100%; /* Ensure the full width */
+            text-align: center; /* Center text in all footer sections */
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 150px; /* Set a minimum width for each section */
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: center; /* Center contact items */
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center; /* Center the social icons */
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+        }
+
+
+        .footer-logo {
+            margin-bottom: 10px; /* Adds space between logo and copyright text */
+        }
+
+        .footer-logo img {
+            max-width: 100px; /* Adjust the size of the logo */
+            height: auto;
+        }
+
+        .footer-bottom i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .header-content {
+                padding: 0 32px;
+            }
+            
+            .search-container {
+                width: 400px;
+            }
+            
+            .main-content {
+                padding: 30px 32px;
+            }
+            
+            .footer-content {
+                padding: 0 32px;
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                order: -1;
+            }
+            
+            .search-container {
+                width: 100%;
+            }
+            
+            .profile-title {
+                font-size: 28px;
+            }
+            
+            .form-container {
+                max-width: 100%;
+                padding: 15px;
+            }
+            
+            .form-input, .form-select select {
+                font-size: 16px;
+                height: 40px;
+            }
+            
+            .form-label {
+                font-size: 16px;
+            }
+            
+            .save-button {
+                font-size: 16px;
+                width: 120px;
+                height: 40px;
+            }
+
+            .profile-header {
+                height: 120px;
+            }
+
+            .profile-image {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="home_page.html">
+                        <img src="logoEduForm.png" alt="EduForm Logo" width="100" />
+                    </a>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for anything">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="Program.html">Program</a>
+                    <a href="testimoni.html">Testimoni</a>
+                    <a href="profile.html" class="profile-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Header -->
+    <section class="profile-header">
+        <img src="profile.png" class="profile-image" alt="Profile Picture" />
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="profile-title">Laura Sintya</h1>
+        
+        <div class="form-container">
+            <form id="profileForm">
+                <div class="form-group">
+                    <label class="form-label">Nama</label>
+                    <input type="text" class="form-input" value="Laura Sintya" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">E-Mail</label>
+                    <input type="email" class="form-input" value="laura.sintya@gmail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Telepon</label>
+                    <input type="tel" class="form-input" value="+6281976549056" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Biografi</label>
+                    <textarea class="form-input form-textarea" placeholder="Ceritakan tentang diri Anda...">Halo, saya sangat ingin menjadi ahli di bidang Data Science.</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Negara</label>
+                    <div class="form-select">
+                        <select>
+                            <option value="ID" selected>Indonesia (ID)</option>
+                            <option value="MY">Malaysia (MY)</option>
+                            <option value="SG">Singapore (SG)</option>
+                            <option value="TH">Thailand (TH)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="save-button">Simpan</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tentang EduForm</h3>
+                    <a href="#">Tentang kami</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Pusat Kontak</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(021) 3030-1111</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>0822-3457-999</span>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="logoEduForm.png" alt="EduForm Logo">
+                </div>
+                <i class="fas fa-copyright"></i> 2025 EduForm. Semua hak cipta dilindungi.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Simulasikan proses penyimpanan
+            alert('Profil berhasil disimpan!');
+            window.location.href = 'profile.html'; // Arahkan kembali ke halaman profil
+        });
+
+
+        // Add interactivity to form inputs
+        const inputs = document.querySelectorAll('.form-input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Responsive search functionality
+        const searchBox = document.querySelector('.search-box');
+        searchBox.addEventListener('input', function() {
+            // Add search functionality here
+            console.log('Searching for:', this.value);
+        });
+    </script>
+</body>
+</html>

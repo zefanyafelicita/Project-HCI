@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduForm - Profil Laura Sintya</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px; /* Define the max width */
+            margin: 0 auto; /* Centers the search bar horizontally */
+            position: relative;
+        }
+
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            cursor: pointer;
+        }
+
+        .profile-icon i {
+            font-size: 20px;
+        }
+
+
+        /* Profile Hero Section */
+        .profile-hero {
+            background: linear-gradient(135deg, #fae0e0 0%, #f8d7da 100%);
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-info h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .profile-info p {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 300px;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .edit-profile-btn {
+            text-decoration: none; /* hilangkan underline */
+            background: white;
+            border: 2px solid #d2b7b7;
+            color: #d27f7f;
+            padding: 10px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            display: inline-block; /* pastikan tidak terdeteksi sebagai inline saja */
+            text-align: center;
+        }
+
+
+        .edit-profile-btn:hover {
+            background: #d27f7f;
+            color: white;
+        }
+
+        /* Learning Section */
+        .learning-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-overlay {
+            position: absolute; /* Menempatkan teks di atas gambar */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Untuk menempatkan teks tepat di tengah */
+            color: white;
+            font-size: 4rem; /* Ukuran teks dapat disesuaikan */
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Memberikan bayangan agar teks lebih terlihat */
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .course-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .course-author {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .course-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rating-star {
+            color: #ffc107;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #28a745;
+        }
+
+        .price-strike {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        /* Programs Section */
+        .programs-section {
+            margin-bottom: 60px;
+        }
+
+        .programs-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .programs-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .program-slide {
+            min-width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .program-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px; /* Untuk memberi efek rounded */
+        }
+
+
+        .program-slide:nth-child(1) { background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)); }
+        .program-slide:nth-child(2) { background-image: linear-gradient(135deg, rgba(255, 94, 77, 0.8), rgba(255, 154, 0, 0.8)); }
+        .program-slide:nth-child(3) { background-image: linear-gradient(135deg, rgba(67, 206, 162, 0.8), rgba(24, 90, 157, 0.8)); }
+        .program-slide:nth-child(4) { background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)); }
+        .program-slide:nth-child(5) { background-image: linear-gradient(135deg, rgba(255, 94, 77, 0.8), rgba(255, 154, 0, 0.8)); }
+        .program-slide:nth-child(6) { background-image: linear-gradient(135deg, rgba(67, 206, 162, 0.8), rgba(24, 90, 157, 0.8)); }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: #667eea;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center; /* Center the footer content */
+        }
+
+        .footer-content {
+            display: flex; /* Use flexbox to align sections */
+            justify-content: center; /* Center the footer sections */
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+            width: 100%; /* Ensure the full width */
+            text-align: center; /* Center text in all footer sections */
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 150px; /* Set a minimum width for each section */
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: center; /* Center contact items */
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center; /* Center the social icons */
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+        }
+
+
+        .footer-logo {
+            margin-bottom: 10px; /* Adds space between logo and copyright text */
+        }
+
+        .footer-logo img {
+            max-width: 100px; /* Adjust the size of the logo */
+            height: auto;
+        }
+
+        .footer-bottom i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-bar {
+                margin: 0;
+                max-width: 100%;
+            }
+
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .profile-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .profile-info h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .course-card {
+                margin: 0 10px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .course-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .course-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="home_page.html">
+                        <img src="logoEduForm.png" alt="EduForm Logo" width="100" />
+                    </a>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for anything">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="Program.html">Program</a>
+                    <a href="testimoni.html">Testimoni</a>
+                    <a href="profile.html" class="profile-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Hero Section -->
+    <section class="profile-hero">
+        <div class="container">
+            <div class="profile-content">
+                <div class="profile-info">
+                    <h2>Pelajar</h2>
+                    <h1>Laura Sintya</h1>
+                </div>
+                
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <img src="profile.png" alt="Profile Picture">
+                    </div>
+                    <div class="profile-name">Laura</div>
+                    <a href="edit_profile.html" class="edit-profile-btn">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Section -->
+    <section class="learning-section">
+        <div class="container">
+            <h2 class="section-title">Pembelajaran Saya</h2>
+            
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="dataScienceProfile.jpg" />
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Data Science</h3>
+                        <p class="course-description">Belajar Data Science dengan Praktik Langsung: 100 Latihan</p>
+                        <p class="course-author">Abdul Rachman</p>
+                        
+                        <div class="course-tags">
+                            <span class="tag">Pembelajaran</span>
+                            <span class="tag">6.5 Jam Total</span>
+                            <span class="tag">Pemula</span>
+                            <span class="tag">99 Penilaian</span>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <div class="rating">
+                                <i class="fas fa-star rating-star"></i>
+                                <span>4.7</span>
+                            </div>
+                            <div class="price">
+                                FREE
+                                <span class="price-strike">Rp 499.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="webDevelopProfile.jpg" />
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Web Development</h3>
+                        <p class="course-description">Belajar Web Development dengan Praktik Langsung...</p>
+                        <p class="course-author">Iman As-Salam</p>
+                        
+                        <div class="course-tags">
+                            <span class="tag">Pembelajaran</span>
+                            <span class="tag">10 Jam Total</span>
+                            <span class="tag">Lanjut</span>
+                            <span class="tag">150 Penilaian</span>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <div class="rating">
+                                <i class="fas fa-star rating-star"></i>
+                                <span>4.7</span>
+                            </div>
+                            <div class="price">
+                                FREE
+                                <span class="price-strike">Rp 499.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section" id="program">
+        <div class="container">
+            <h2 class="section-title">Program Lainnya</h2>
+            
+            <div class="programs-slider">
+                <div class="programs-container" id="programsContainer">
+                    <div class="program-slide">
+                        <img src="webdevelopProgram.jpg" alt="Web Development"/>
+                        <div class="text-overlay">Web Development</div>
+                    </div>
+                    <div class="program-slide">
+                        <img src="mobiledevelopProgram.jpg" alt="Mobile Development"/>
+                        <div class="text-overlay">Mobile Development</div>
+                    </div>
+                    <div class="program-slide">
+                        <img src="datascienceProgram.jpg" alt="Data Science"/>
+                        <div class="text-overlay">Data Science</div>
+                    </div>
+                    <div class="program-slide">
+                        <img src="uiuxProgram.jpg" alt="UI UX"/>
+                        <div class="text-overlay">UI/UX Design</div>
+                    </div>
+                    <div class="program-slide">
+                        <img src="digitalmarketingProgram.jpg" alt="Digital Marketing"/>
+                        <div class="text-overlay">Digital Marketing</div>
+                    </div>
+                    <div class="program-slide">
+                        <img src="cybersecurityProgram.jpg" alt="Cyber Security"/>
+                        <div class="text-overlay">Cyber Security</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-controls">
+                <div class="slider-dot active" onclick="goToSlide(0)"></div>
+                <div class="slider-dot" onclick="goToSlide(1)"></div>
+                <div class="slider-dot" onclick="goToSlide(2)"></div>
+                <div class="slider-dot" onclick="goToSlide(3)"></div>
+                <div class="slider-dot" onclick="goToSlide(4)"></div>
+                <div class="slider-dot" onclick="goToSlide(5)"></div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tentang EduForm</h3>
+                    <a href="#">Tentang kami</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Pusat Kontak</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(021) 3030-1111</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>0822-3457-999</span>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="logoEduForm.png" alt="EduForm Logo">
+                </div>
+                <i class="fas fa-copyright"></i> 2025 EduForm. Semua hak cipta dilindungi.
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 6;
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            const container = document.getElementById('programsContainer');
+            const translateX = -slideIndex * 100;
+            container.style.transform = `translateX(${translateX}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+        }
+
+        // Auto-slide functionality
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }, 4000);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Search functionality
+        document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim();
+                if (searchTerm) {
+                    alert(`Mencari: ${searchTerm}`);
+                    // Implement actual search functionality here
+                }
+            }
+        });
+
+        // Course card hover effects
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 15px 35px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            });
+        });
+    </script>
+</body>
+</html>

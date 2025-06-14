@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Testimoni Peserta - EduForm</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #F8F9FA;
+    }
+
+    /* HEADER */
+ /* Header Styles */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px; /* Adjust padding to make space */
+            position: relative;  /* Make sure profile icon can be positioned absolutely */
+        }
+
+        .logo {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px; /* Define the max width */
+            margin: 0 auto; /* Centers the search bar horizontally */
+            position: relative;
+        }
+
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            cursor: pointer;
+        }
+
+        .profile-icon i {
+            font-size: 20px;
+        }
+
+        /* Profile Header - Smaller */
+        .profile-header {
+            background: linear-gradient(135deg, #fae0e0 0%, #ffe0e0 100%);
+            height: 160px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image {
+            width: 100px; /* Ukuran diameter lingkaran */
+            height: 100px; /* Ukuran diameter lingkaran */
+            border-radius: 50%; /* Membuat gambar berbentuk bulat */
+            object-fit: cover; /* Menyesuaikan gambar tanpa merusak proporsi */
+            border: 3px solid #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+    /* TESTIMONI */
+    .testimoni-section {
+      padding: 60px 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .testimoni-section h2 {
+      font-size: 48px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .testimoni-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .testimoni-card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .testimoni-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .testimoni-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .testimoni-name {
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .testimoni-role {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .testimoni-text {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+      color: white;
+      padding: 40px 0 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .footer-section p, .footer-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-section a:hover {
+      color: white;
+    }
+
+    .contact-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+    }
+
+    .footer-logo {
+      margin-bottom: 10px;
+    }
+
+    .footer-logo img {
+      max-width: 100px;
+      height: auto;
+    }
+
+    .footer-bottom i {
+      margin-right: 5px;
+    }
+
+  </style>
+</head>
+<body>
+
+   <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="home_page.html">
+                        <img src="logoEduForm.png" alt="EduForm Logo" width="100" />
+                    </a>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for anything">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="Program.html">Program</a>
+                    <a href="testimoni.html">Testimoni</a>
+                    <a href="profile.html" class="profile-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+  <!-- Testimoni -->
+  <section class="testimoni-section">
+    <h2>Testimoni Peserta EduForm</h2>
+    <div class="testimoni-grid">
+      <!-- Testimoni 1 -->
+      <div class="testimoni-card">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="testimoni-avatar" alt="Avatar">
+        <div class="testimoni-name">Ayu Rahmawati</div>
+        <div class="testimoni-role">Peserta UI/UX Design</div>
+        <p class="testimoni-text">Pelatihannya sangat interaktif dan materi yang disampaikan mudah dipahami. Saya jadi lebih percaya diri untuk melamar kerja di bidang UI/UX!</p>
+      </div>
+
+      <!-- Testimoni 2 -->
+      <div class="testimoni-card">
+        <img src="https://randomuser.me/api/portraits/men/38.jpg" class="testimoni-avatar" alt="Avatar">
+        <div class="testimoni-name">Rizky Ananda</div>
+        <div class="testimoni-role">Peserta Web Development</div>
+        <p class="testimoni-text">Instruktur sangat berpengalaman dan sabar. Saya bisa membuat website sendiri sekarang, dan mulai menerima proyek freelance.</p>
+      </div>
+
+      <!-- Testimoni 3 -->
+      <div class="testimoni-card">
+        <img src="https://randomuser.me/api/portraits/men/25.jpg" class="testimoni-avatar" alt="Avatar">
+        <div class="testimoni-name">Dimas Prasetyo</div>
+        <div class="testimoni-role">Peserta Data Science</div>
+        <p class="testimoni-text">Materi pelatihannya up-to-date dan aplikatif. Sangat cocok untuk pemula yang ingin belajar machine learning dari nol.</p>
+      </div>
+
+      <!-- Testimoni 4 -->
+      <div class="testimoni-card">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" class="testimoni-avatar" alt="Avatar">
+        <div class="testimoni-name">Siti Nurhaliza</div>
+        <div class="testimoni-role">Peserta Digital Marketing</div>
+        <p class="testimoni-text">Saya jadi lebih paham tentang strategi pemasaran digital. Ilmu ini langsung saya terapkan di bisnis online saya!</p>
+      </div>
+
+      <!-- Testimoni 5 -->
+    <div class="testimoni-card">
+    <img src="https://randomuser.me/api/portraits/women/52.jpg" class="testimoni-avatar" alt="Avatar">
+    <div class="testimoni-name">Indah Pertiwi</div>
+    <div class="testimoni-role">Peserta Mobile App Development</div>
+    <p class="testimoni-text">Saya senang bisa ikut pelatihan ini, sekarang saya sudah bisa membuat aplikasi Android sendiri menggunakan Flutter!</p>
+    </div>
+
+    <!-- Testimoni 6 -->
+    <div class="testimoni-card">
+    <img src="https://randomuser.me/api/portraits/men/17.jpg" class="testimoni-avatar" alt="Avatar">
+    <div class="testimoni-name">Bayu Saputra</div>
+    <div class="testimoni-role">Peserta Cyber Security</div>
+    <p class="testimoni-text">Materi tentang keamanan jaringan sangat membuka wawasan saya. Sangat bermanfaat untuk meningkatkan sistem keamanan di tempat kerja.</p>
+    </div>
+
+    <!-- Testimoni 7 -->
+    <div class="testimoni-card">
+    <img src="https://randomuser.me/api/portraits/women/28.jpg" class="testimoni-avatar" alt="Avatar">
+    <div class="testimoni-name">Mira Lestari</div>
+    <div class="testimoni-role">Peserta Digital Marketing</div>
+    <p class="testimoni-text">Strategi SEO dan media sosial yang diajarkan benar-benar praktis. Penjualan online saya meningkat drastis setelah menerapkannya.</p>
+    </div>
+
+    <!-- Testimoni 8 -->
+    <div class="testimoni-card">
+    <img src="https://randomuser.me/api/portraits/men/56.jpg" class="testimoni-avatar" alt="Avatar">
+    <div class="testimoni-name">Andi Kurniawan</div>
+    <div class="testimoni-role">Peserta Data Science</div>
+    <p class="testimoni-text">Saya mengikuti pelatihan Data Science dan langsung apply ke proyek freelance. Platform EduForm sangat membantu saya berkembang cepat.</p>
+    </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Tentang EduForm</h3>
+          <a href="#">Tentang kami</a>
+        </div>
+        <div class="footer-section">
+          <h3>Pusat Kontak</h3>
+          <div class="contact-item"><i class="fas fa-phone"></i><span>(021) 3030-1111</span></div>
+          <div class="contact-item"><i class="fab fa-whatsapp"></i><span>0822-3457-999</span></div>
+        </div>
+        <div class="footer-section">
+          <h3>Ikuti Kami</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-logo"><img src="logoEduForm.png" alt="EduForm Logo"></div>
+        <i class="fas fa-copyright"></i> 2025 EduForm. Semua hak cipta dilindungi.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduForm Landing Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 92px;
+    }
+    nav a {
+      margin: 0 20px;
+      font-weight: 500;
+      text-decoration: none;
+      color: #000;
+    }
+    .btn-masuk {
+      background-color: rgba(220, 33, 33, 0.9);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 92px;
+    }
+    .hero-text {
+      max-width: 600px;
+    }
+    .hero-text h1 {
+      font-size: 48px;
+      line-height: 72px;
+      font-weight: 400;
+    }
+    .hero-text p {
+      margin-top: 10px;
+      font-size: 25px;
+      line-height: 38px;
+      font-weight: 300;
+    }
+      .btn-daftar {
+      margin-top: 30px;
+      background-color: rgba(220, 33, 62, 0.9);
+      color: white;
+      padding: 20px 40px;
+      border: none;
+      border-radius: 10px;
+      font-size: 25px;
+      font-weight: 500;
+    }
+    .section-tentang {
+      background-color: rgba(220, 33, 62, 0.9);
+      color: white;
+      padding: 60px 92px;
+    }
+    .section-tentang h2 {
+      text-align: center;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 40px;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+    .card {
+      background: rgba(255,255,255,0.4);
+      border: 1px solid #fff;
+      border-radius: 20px;
+      padding: 30px;
+      flex: 1 1 45%;
+    }
+    .card h3 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+    .card p {
+      font-size: 18px;
+    }
+    .section-program, .section-testimoni {
+      padding: 60px 92px;
+    }
+    .section-program h2, .section-testimoni h2 {
+      font-size: 48px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .program-cards {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 20px;
+    }
+    .program-card {
+      min-width: 495px;
+      height: 368px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      color: #FFF;
+      font-size: 32px;
+      font-weight: 800;
+      background-blend-mode: overlay;
+      background-image: linear-gradient(360deg, rgba(220, 33, 33, 0.2) 23.08%, rgba(255, 255, 255, 0.2) 100%);
+    }
+    .testimoni-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+      padding: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .testimoni-card p {
+      font-size: 24px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .testimoni-card .author {
+      font-size: 18px;
+      color: #DC2121;
+      font-weight: 500;
+    }
+    footer {
+      background-color: rgba(220, 33, 62, 0.9);
+      color: white;
+      padding: 60px 92px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    footer h4 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    footer p, footer a {
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+    }
+    footer .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+    footer .social-icons a {
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      display: inline-block;
+      border-radius: 50%;
+    }
+    .copyright {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 30px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .btn-profil {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #DC2121;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn-profil:hover {
+  transform: scale(1.05);
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="home_page.html">
+      <img src="logoEduForm.png" alt="EduForm Logo" width="100" />
+    </a>
+    <nav>
+      <a href="#tentang">Tentang Kami</a>
+      <a href="Program.html">Program</a>
+      <a href="testimoni.html">Testimoni</a>
+    </nav>
+    <a href="profile.html">
+  <img src="profile.png" alt="Profil" class="btn-profil">
+</a>
+
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Wujudkan Impian Menjadi Programmer Profesional</h1>
+      <p>Mulai journey coding Anda hari ini</p>
+      <!-- <button class="btn-daftar">Daftar Sekarang</button> -->
+      <a href="form_course.html">
+      <button class="btn-daftar">Daftar Sekarang</button>
+      </a>
+    </div>
+    <img src="home3org.png" alt="Hero Image" width="470" height="470" />
+  </section>
+
+  <section class="section-tentang" id="tentang">
+    <h2>Tentang Kami</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Visi</h3>
+        <p>Menjadi platform pelatihan digital terdepan yang memudahkan akses pendidikan teknologi informasi secara cepat, efisien, dan inklusif.</p>
+      </div>
+      <div class="card">
+        <h3>Misi</h3>
+        <p>Menyediakan kurikulum berbasis industri, program magang, koneksi industri, dan tempat belajar inklusif untuk semua kalangan.</p>
+      </div>
+      <div class="card" style="flex: 1 1 100%">
+        <h3>Deskripsi Produk</h3>
+        <p>EduForm adalah aplikasi pendaftaran pelatihan berbasis web yang dirancang untuk mempermudah akses belajar coding bagi semua kalangan. Dengan antarmuka yang sederhana dan ramah pengguna, EduForm memungkinkan pengguna menjelajahi dan mendaftar pelatihan secara cepat dan efisien.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-program" id="program">
+    <h2>Program</h2>
+    <div class="program-cards">
+        <div class="program-card" style="background-image: url('weDev.jpg');"></div>
+        <div class="program-card" style="background-image: url('MobileDev.jpg');"></div>
+        <div class="program-card" style="background-image: url('DataScience.jpg');"></div>
+        <div class="program-card" style="background-image: url('ui_ux.jpg');"></div>
+        <div class="program-card" style="background-image: url('digMar.jpg');"></div>
+        <div class="program-card" style="background-image: url('cyber.jpg');"></div>
+    </div>
+  </section>
+
+
+
+<section class="section-testimoni" id="testimoni">
+  <h2>Testimoni</h2>
+  <div class="testimoni-slider">
+    <div class="testimoni-card active">
+      <div class="testimoni-content">
+        <div class="testimoni-text">
+          <p>“Saya tidak memiliki latar belakang IT, tapi EduForm membantu saya membangun fondasi yang kuat di dunia pemrograman. Berkat pelatihan-pelatihannya, saya kini bekerja sebagai Junior Web Developer di startup teknologi impian saya.”</p>
+          <hr class="line" />
+          <div class="author">
+            <strong>Kimberly Santoso</strong><br />
+            Junior Web Developer – TechVerse<br />
+            Lulusan Front-End & Back-End Development Path
+          </div>
+        </div>
+        <div class="testimoni-image">
+          <img src="kimberly_remove.png" alt="Kimberly Santoso" />
+        </div>
+      </div>
+    </div>
+    <div class="testimoni-card">
+      <div class="testimoni-content">
+        <div class="testimoni-text">
+          <p>“Awalnya saya hanya iseng ikut pelatihan, tapi materi dari EduForm sangat aplikatif dan membuka wawasan saya. Kini saya sudah bekerja di divisi Data Analyst sebuah e-commerce nasional.”</p>
+          <hr class="line" />
+          <div class="author">
+            <strong>Steven Purnama</strong><br />
+            Data Analyst – BelanjaMaju<br />
+            Lulusan Data Science & SQL Path
+          </div>
+        </div>
+        <div class="testimoni-image">
+          <img src="steven.png" alt="Steven Purnama" />
+        </div>
+      </div>
+    </div>
+    <div class="testimoni-card">
+      <div class="testimoni-content">
+        <div class="testimoni-text">
+          <p>“Pelatihan dari EduForm benar-benar jadi batu loncatan karier saya. Setelah menyelesaikan modul Cyber Security, saya langsung percaya diri melamar dan akhirnya diterima di Telkom sebagai bagian dari tim keamanan digital mereka.”</p>
+          <hr class="line" />
+          <div class="author">
+            <strong>Alexander Prakoso</strong><br />
+            Cyber Security Associate – Telkom Indonesia<br />
+            Lulusan Cyber Security & Networking Path
+          </div>
+        </div>
+        <div class="testimoni-image">
+          <img src="alexander.png" alt="Alexander Prakoso" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="testimoni-nav">
+    <button id="prev">&#10094;</button>
+    <div class="dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+    <button id="next">&#10095;</button>
+  </div>
+</section>
+
+<style>
+.section-testimoni {
+  padding: 60px 92px;
+  background-color: #fff;
+}
+.section-testimoni h2 {
+  font-size: 48px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.testimoni-slider {
+  position: relative;
+  overflow: hidden;
+}
+.testimoni-card {
+  display: none;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+  padding: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.testimoni-card.active {
+  display: block;
+  animation: fade 0.4s ease-in-out;
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.testimoni-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+.testimoni-text {
+  flex: 1;
+}
+.testimoni-text p {
+  font-size: 24px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.testimoni-text .line {
+  border: none;
+  border-top: 6px solid #DC2121;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.testimoni-text .author {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+.testimoni-image img {
+  width: 250px;
+  border-radius: 0;
+  background-color: #DC2121;
+  padding: 20px;
+  object-fit: contain;
+}
+.testimoni-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+.testimoni-nav button {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.dots .dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+.dot.active {
+  background-color: #000;
+}
+
+/* Footer */
+        .footer {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center; /* Center the footer content */
+        }
+
+        .footer-content {
+            display: flex; /* Use flexbox to align sections */
+            justify-content: center; /* Center the footer sections */
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+            width: 100%; /* Ensure the full width */
+            text-align: center; /* Center text in all footer sections */
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 150px; /* Set a minimum width for each section */
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: center; /* Center contact items */
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center; /* Center the social icons */
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+        }
+
+
+        .footer-logo {
+            margin-bottom: 10px; /* Adds space between logo and copyright text */
+        }
+
+        .footer-logo img {
+            max-width: 100px; /* Adjust the size of the logo */
+            height: auto;
+        }
+
+        .footer-bottom i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+        .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+</style>
+
+<script>
+const cards = document.querySelectorAll('.testimoni-card');
+const dots = document.querySelectorAll('.dot');
+let current = 0;
+
+function showSlide(index) {
+  cards.forEach((card, i) => {
+    card.classList.toggle('active', i === index);
+    dots[i].classList.toggle('active', i === index);
+  });
+  current = index;
+}
+
+document.getElementById('prev').onclick = () => {
+  showSlide((current - 1 + cards.length) % cards.length);
+};
+
+document.getElementById('next').onclick = () => {
+  showSlide((current + 1) % cards.length);
+};
+
+dots.forEach(dot => {
+  dot.onclick = () => showSlide(parseInt(dot.dataset.index));
+});
+
+showSlide(current);
+</script>
+
+
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tentang EduForm</h3>
+                    <a href="#">Tentang kami</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Pusat Kontak</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(021) 3030-1111</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>0822-3457-999</span>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="logoEduForm.png" alt="EduForm Logo">
+                </div>
+                <i class="fas fa-copyright"></i> 2025 EduForm. Semua hak cipta dilindungi.
+            </div>
+        </div>
+  </footer>
+</body>
+</html>
